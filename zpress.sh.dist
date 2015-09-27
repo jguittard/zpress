@@ -1,0 +1,25 @@
+#!/bin/bash
+
+#The Zend Server version
+export ZP_ZS_VERSION="8.5.1"
+# Zend service license data
+export ZP_ZS_ORDER_NUMBER=""
+export ZP_ZS_LICENSE_KEY=""
+
+#The Zend Server API key name
+#(used by chef during provisionning)
+export ZP_ZS_API_KEY_NAME=""
+# The Zend Server Web API keyname
+# (A random 64 alnum characters string)
+export ZP_ZS_API_KEY_SECRET=""
+
+#The PHP version either 5.5 or 5.6 at the time of writing
+export ZP_PHP_VERSION="5.6"
+
+#The MySQL root user password
+export ZP_DB_PASSWORD=""
+
+#Your email address
+export ZP_DEV_EMAIL=""
+
+time vagrant $*

@@ -1,6 +1,9 @@
 # Composer files
-composer.phar
+composer.lock
 vendor/
+
+#IDE
+.idea/
 
 # Local configs
 config/autoload/*.local.php
@@ -18,3 +21,6 @@ temp/
 # Legacy ZF1
 demos/
 extras/documentation
+zpress.sh
+build.properties
+Berksfile.lock

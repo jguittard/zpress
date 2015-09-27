@@ -1,0 +1,36 @@
+<project name="zpress" default="default" basedir=".">
+    <available file="build.properties" property="file_prop_exists" type="file" />
+    <if>
+        <equals arg1="${file_prop_exists}" arg2="true" />
+        <then>
+            <!-- parse the properties files -->
+            <property file="build.properties"/>
+        </then>
+    </if>
+    <target name="default" description="The default target to list targets">
+        <exec command="phing -l" outputProperty="phing_targets"/>
+        <echo>Please select a target.</echo>
+        <echo>${phing_targets}</echo>
+    </target>
+    <target name="clean" description="Cleaning up the application">
+        <delete>
+            <fileset dir="${project.basedir}/data/cache">
+                <include name="*.php" />
+            </fileset>
+        </delete>
+    </target>
+    <target name="setup-composer">
+        <composer command="config" composer="${composer.bin}">
+            <arg value="--global" />
+            <arg value="github-oauth.github.com" />
+            <arg value="${composer.token}" />
+        </composer>
+    </target>
+    <target name="install-dependencies" depends="clean">
+        <composer command="install" composer="${composer.bin}">
+            <arg value="--no-interaction" />
+        </composer>
+    </target>
+
+    <target name="init" depends="setup-composer, install-dependencies" />
+</project>
