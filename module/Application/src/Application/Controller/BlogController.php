@@ -9,6 +9,9 @@ use Zend\Mvc\Controller\AbstractActionController;
  * Class BlogController
  *
  * @package Application\Controller
+ *
+ * @author Julien Guittard <julien.g@zend.com>
+ * @version 1.0
  */
 class BlogController extends AbstractActionController
 {
@@ -32,5 +35,10 @@ class BlogController extends AbstractActionController
         $slug = $this->params()->fromRoute('slug');
         $post = $this->postService->getPostBySlug($slug);
         return compact('post');
+    }
+
+    public function authorsAction()
+    {
+
     }
 }

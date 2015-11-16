@@ -1,6 +1,8 @@
 <?php
 /** @var \Blog\Entity\Post $post */
-$post = $this->post; ?>
+$post = $this->post;
+$createdTime = new DateTime($post->getCreatedTime());
+?>
 <!-- Blog Post -->
 
 <!-- Title -->

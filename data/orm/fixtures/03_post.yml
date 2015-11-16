@@ -10,5 +10,5 @@ Blog\Entity\Post:
     category: @category_*
     createdTime: <dateTimeBetween("1 day", "3 months")>
     updatedTime: @self->createdTime
-    banner: <image('public/assets/posts', 786, 589, "technics")>
+    banner: <image('public/assets/posts', 1200, 900, "technics")>
     tags: <numberBetween(1, 4)>x @tag*

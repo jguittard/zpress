@@ -9,6 +9,9 @@ use Blog\Service\Post as PostService;
  * Class HomeController
  *
  * @package Application\Controller
+ *
+ * @author Julien Guittard <julien.g@zend.com>
+ * @version 1.0
  */
 class HomeController extends AbstractActionController
 {

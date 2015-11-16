@@ -1,6 +1,9 @@
 <?php echo $this->doctype(); ?>
-
+<!--[if IE 8]><html lang="en" class="ie8 no-js"><![endif]-->
+<!--[if IE 9]><html lang="en" class="ie9 no-js"><![endif]-->
+<!--[if !IE]><!-->
 <html lang="en">
+<!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <?php
@@ -8,11 +11,11 @@
     echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0')
                           ->appendName('author', 'Julien Guittard')
                           ->appendName('description', 'Blog engine based on ZF2')
-                          ->appendHttpEquiv('X-UA-Compatible', 'IE=edge');
-    ?>
+                          ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+    ; ?>
     <?php echo $this->headScript()->appendFile('https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js', 'text/javascript', array('conditional' => 'lt IE 9'))
-                                  ->appendFile('https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9'));
-    ?>
+                                  ->appendFile('https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9'))
+    ; ?>
     <?php $this->inlinescript()->appendFile('https://code.jquery.com/jquery-1.11.3.min.js')
                                ->appendFile('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js')
     ; ?>
@@ -24,7 +27,7 @@
             ))
             ->appendStylesheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css')
             ->appendStylesheet($this->basePath('styles/blog.css'))
-    ;?>
+    ; ?>
 </head>
 <body>
 <!-- Navigation -->

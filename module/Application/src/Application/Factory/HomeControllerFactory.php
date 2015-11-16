@@ -10,6 +10,9 @@ use Zend\ServiceManager\ServiceLocatorInterface;
  * Class HomeControllerFactory
  *
  * @package Application\Factory
+ *
+ * @author Julien Guittard <julien.g@zend.com>
+ * @version 1.0
  */
 class HomeControllerFactory implements FactoryInterface
 {

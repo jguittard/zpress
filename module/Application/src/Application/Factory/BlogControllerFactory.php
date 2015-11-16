@@ -10,6 +10,9 @@ use Zend\ServiceManager\ServiceLocatorInterface;
  * Class BlogControllerFactory
  *
  * @package Application\Factory
+ *
+ * @author Julien Guittard <julien.g@zend.com>
+ * @version 1.0
  */
 class BlogControllerFactory implements FactoryInterface
 {
