@@ -1,8 +1,4 @@
 <?php
-/**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2015 ZPress Inc. (https://zpress.io)
- */
 
 return [
     'router' => [
@@ -12,17 +8,37 @@ return [
                 'options' => [
                     'route'    => '/',
                     'defaults' => array(
-                        'controller' => 'Application\Controller\Index',
+                        'controller' => 'Application\Controller\Home',
                         'action'     => 'index',
                     ),
                 ],
             ],
+            'blog' => [
+                'type' => 'Literal',
+                'options' => [
+                    'route' => '/blog',
+                ],
+                'may_terminate' => false,
+                'child_routes' => [
+                    'post' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/:slug',
+                            'defaults' => [
+                                'controller' => 'Application\Controller\Blog',
+                                'action' => 'post'
+                            ]
+                        ]
+                    ]
+                ]
+            ],
         ],
     ],
     'controllers' => [
-        'invokables' => [
-            'Application\Controller\Index' => 'Application\Controller\IndexController',
-        ],
+        'factories' => [
+            'Application\Controller\Home' => \Application\Factory\HomeControllerFactory::class,
+            'Application\Controller\Blog' => \Application\Factory\BlogControllerFactory::class,
+        ]
     ],
     'view_manager' => [
         'display_not_found_reason' => true,
@@ -32,7 +48,7 @@ return [
         'exception_template'       => 'error/index',
         'template_map' => [
             'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
-            'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
+            'application/home/index' => __DIR__ . '/../view/application/home/index.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
         ],

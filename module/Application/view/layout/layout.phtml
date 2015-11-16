@@ -4,14 +4,51 @@
 <head>
     <meta charset="utf-8">
     <?php
-    echo $this->headTitle('Apigility');
-    echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0');
+    echo $this->headTitle('ZPress');
+    echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0')
+                          ->appendName('author', 'Julien Guittard')
+                          ->appendName('description', 'Blog engine based on ZF2')
+                          ->appendHttpEquiv('X-UA-Compatible', 'IE=edge');
     ?>
-
+    <?php echo $this->headScript()->appendFile('https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js', 'text/javascript', array('conditional' => 'lt IE 9'))
+                                  ->appendFile('https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9'));
+    ?>
+    <?php $this->inlinescript()->appendFile('https://code.jquery.com/jquery-1.11.3.min.js')
+                               ->appendFile('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js')
+    ; ?>
+    <?php echo $this->headLink(
+            array(
+                'rel' => 'shortcut icon',
+                'type' => 'image/vnd.microsoft.icon',
+                'href' => $this->basePath() . '/favicon.ico'
+            ))
+            ->appendStylesheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css')
+            ->appendStylesheet($this->basePath('styles/blog.css'))
+    ;?>
 </head>
 <body>
+<!-- Navigation -->
+<?php echo $this->partial('partials/navigation.phtml'); ?>
 <div class="container">
-    <?php echo $this->content; ?>
+    <div class="row">
+        <div class="col-md-8">
+        <?php echo $this->content; ?>
+        </div>
+        <div class="col-md-4">
+            <?php echo $this->partial('partials/sidebar.phtml'); ?>
+        </div>
+    </div>
+    <hr>
+    <!-- Footer -->
+    <footer>
+        <div class="row">
+            <div class="col-lg-12">
+                <p>Copyright &copy; ZPress 2015</p>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+    </footer>
 </div> <!-- /container -->
 <?php echo $this->inlineScript() ?>
 </body>

@@ -18,9 +18,7 @@ data/sessions/
 data/tmp/
 temp/
 
-# Legacy ZF1
-demos/
-extras/documentation
+.vagrant/
 zpress.sh
 build.properties
 Berksfile.lock

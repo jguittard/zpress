@@ -7,6 +7,7 @@
 return [
     // Development time modules
     'modules' => [
+        'DoctrineDataFixtureModule',
     ],
     // development time configuration globbing
     'module_listener_options' => [

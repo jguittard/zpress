@@ -1,0 +1,64 @@
+Blog\Entity\Category:
+  category_php:
+    name: "PHP"
+  category_zf2:
+    name: "ZF2"
+    parent: @category_php
+  category_apigility:
+    name: "Apigility"
+    parent: @category_zf2
+  category_oop:
+    name: "OOP"
+  category_dp:
+    name: "Design Patterns"
+    parent: @category_oop
+  category_virtualization:
+    name: "Virtualization"
+  category_devtools:
+    name: "Development Tools"
+
+Blog\Entity\Tag:
+  tag_framework:
+    name: "Framework"
+  tag_sm:
+    name: "Service Manager"
+  tag_mm:
+    name: "Module Manager"
+  tag_em:
+    name: "Event Manager"
+  tag_router:
+    name: "Router"
+  tag_forms:
+    name: "Forms"
+  tag_orm:
+    name: "ORM"
+  tag_api:
+    name: "API"
+  tag_vagrant:
+    name: "Vagrant"
+  tag_deployment:
+    name: "Deployment"
+  tag_mvc:
+    name: "MVC"
+  tag_{1..25}:
+    name (unique): <word()>
+
+Blog\Entity\PostType:
+  type_post:
+    name: "Post"
+    icon: "icon-pen"
+  type_picture:
+    name: "Picture"
+    icon: "icon-photo"
+  type_video:
+    name: "Video"
+    icon: "icon-video"
+  type_audio:
+    name: "Audio"
+    icon: "icon-sound"
+  type_link:
+    name: "Link"
+    icon: "icon-clip"
+  type_quote:
+    name: "Quote"
+    icon: "fa fa-quote-left"

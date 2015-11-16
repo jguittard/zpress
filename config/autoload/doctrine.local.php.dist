@@ -1,0 +1,21 @@
+<?php
+return [
+    'data-fixture' => [
+        'Application_fixture' => __DIR__ . '/../../module/Application/src/Application/Fixture',
+    ],
+    'doctrine' => [
+        'connection' => [
+            'orm_default' => [
+                'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
+                'params' => [
+                    'host'      => '%%DB_HOST%%',
+                    'port'      => '3306',
+                    'user'      => '%%DB_USER%%',
+                    'charset'   => 'UTF8',
+                    'password'  => '%%DB_PASSWORD%%',
+                    'dbname'    => '%%DB_NAME%%',
+                ],
+            ],
+        ],
+    ],
+];

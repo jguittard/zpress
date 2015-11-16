@@ -5,6 +5,9 @@
  */
 
 return [
+    'DoctrineModule',
+    'DoctrineORMModule',
     'Application',
+    'Blog',
     'ZF\\DevelopmentMode',
 ];

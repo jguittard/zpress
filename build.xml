@@ -32,5 +32,30 @@
         </composer>
     </target>
 
-    <target name="init" depends="setup-composer, install-dependencies" />
+    <target name="setup-db">
+        <exec command="cd data/sql &amp;&amp; echo *.sql" escape="false" outputProperty="db.files" />
+        <pdosqlexec url="mysql:host=${db.host}" userid="${db.super.username}" password="${db.super.password}">
+            <filelist dir="data/sql" files="${db.files}" />
+        </pdosqlexec>
+    </target>
+
+    <target name="config-db-settings" description="Create a local DB config file">
+        <copy file="${project.basedir}/config/autoload/doctrine.local.php.dist" tofile="${project.basedir}/config/autoload/doctrine.local.php" overwrite="true">
+            <filterchain>
+                <replacetokens begintoken="%%" endtoken="%%">
+                    <token key="DB_HOST" value="${db.host}" />
+                    <token key="DB_USER" value="${db.user}" />
+                    <token key="DB_PASSWORD" value="${db.password}" />
+                    <token key="DB_NAME" value="${db.name}" />
+                </replacetokens>
+            </filterchain>
+        </copy>
+    </target>
+
+    <target name="migrate-db" depends="config-db-settings">
+        <exec dir="${project.basedir}" command="${php.bin} ${project.basedir}/public/index.php migrations:migrate --no-interaction" />
+        <exec dir="${project.basedir}" command="${php.bin} ${project.basedir}/public/index.php orm:generate-proxies" />
+    </target>
+
+    <target name="init" depends="setup-composer, install-dependencies, setup-db, config-db-settings, migrate-db" />
 </project>

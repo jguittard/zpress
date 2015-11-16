@@ -1,0 +1,12 @@
+Blog\Entity\User:
+  user_julien:
+    firstName: "Julien"
+    lastName: "Guittard"
+    username: <username(@self->firstName, @self->lastName)>
+    email: "julien.g@zend.com"
+    password: <bcrypt('password')>
+    role: "admin"
+    website: "http://julienguittard.com"
+    bio: <realText($maxNbChars = 200, $indexSize = 2)>
+    facebook: "julien.guittard"
+    twitter: "julienguittard"

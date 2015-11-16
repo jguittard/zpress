@@ -1,0 +1,21 @@
+<h1 class="page-header">
+    Page Heading
+    <small>Secondary Text</small>
+</h1>
+<?php foreach ($this->posts as $post): ?>
+    <h2>
+        <a href="<?php echo $this->url('blog/post', ['slug' => $post->getSlug()]); ?>"><?php echo $post->getTitle(); ?></a>
+    </h2>
+    <p class="lead">
+        by <a href="<?php echo $this->url('home'); ?>"><?php echo $post->getAuthor()->getFirstName(); ?></a>
+    </p>
+    <p>
+        <span class="glyphicon glyphicon-time"></span> Posted on today
+    </p>
+    <hr>
+    <img class="img-responsive" src="<?php echo $this->basePath(str_replace('public', '', $post->getBanner())); ?>" alt="<?php echo $post->getTitle(); ?>" />
+    <hr>
+    <p><?php echo $post->getExcerpt(); ?></p>
+    <a class="btn btn-primary" href="<?php echo $this->url('blog/post', ['slug' => $post->getSlug()]); ?>">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+    <hr>
+<?php endforeach;

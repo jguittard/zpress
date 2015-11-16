@@ -1,0 +1,27 @@
+<?php
+/** @var \Blog\Entity\Post $post */
+$post = $this->post; ?>
+<!-- Blog Post -->
+
+<!-- Title -->
+<h1><?php echo $post->getTitle(); ?></h1>
+
+<!-- Author -->
+<p class="lead">
+    by <a href="#"><?php echo $post->getAuthor()->getFirstName(); ?></a>
+</p>
+
+<hr>
+
+<!-- Date/Time -->
+<p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
+
+<hr>
+
+<!-- Preview Image -->
+<img class="img-responsive" src="<?php echo $this->basePath(str_replace('public', '', $post->getBanner())); ?>" alt="<?php echo $post->getTitle(); ?>">
+
+<hr>
+
+<!-- Post Content -->
+<?php echo $post->getContent(); ?>
